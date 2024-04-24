@@ -1,0 +1,78 @@
+.phone {
+  padding-top: 4px;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: $whiteColor;
+    outline: transparent;
+    transition: color 0.2s ease-in-out, fill 0.2s ease-in-out;
+
+    &-svg {
+      margin-right: 2px;
+
+      & use {
+        fill: $whiteColor;
+        opacity: 0.7;
+        transition: color 0.2s ease-in-out, fill 0.2s ease-in-out;
+      }
+    }
+
+    &:focus {
+      outline: 1px solid $accentColor-2;
+      outline-offset: 3px;
+    }
+
+    &:hover {
+      color: $accentColor;
+
+      & use {
+        fill: $accentColor;
+      }
+    }
+  }
+
+  @include media(1200px) {
+    padding-top: 7px;
+    margin-right: 46px;
+
+    &__link {
+      color: $accentColor;
+
+      & use {
+        fill: $accentColor;
+        opacity: 1;
+      }
+    }
+  }
+
+  @include media(640px) {
+    display: none;
+    padding-top: 0;
+    padding-bottom: 3px;
+
+    &__mobile {
+      display: flex;
+      margin-right: 0;
+    }
+
+    .phone__link {
+      font-weight: 500;
+      font-size: 14px;
+
+      & use {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
+
+// внутри бургера
+.phone__mobile_active {
+  display: flex;
+  position: absolute;
+  top: 413%;
+  left: 19px;
+  z-index: 20;
+}

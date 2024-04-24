@@ -1,0 +1,149 @@
+.about {
+  @include sectionPaddings(30px, 69px);
+  background-color: $darkColor;
+
+  &__container {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__left-block {
+    width: 50%;
+  }
+
+  &__title {
+    margin-bottom: 9px;
+    @extend %section-title;
+    letter-spacing: 1.7px;
+    color: $whiteColor;
+  }
+
+  &__block-text {
+    width: 100%;
+    line-height: 1.75;
+    color: $defaultColor;
+  }
+
+  &__newsletter-label {
+    display: block;
+    margin-bottom: 16px;
+    font-family: $font-second;
+    font-size: 24px;
+    line-height: 0.91667;
+    color: $whiteColor;
+  }
+
+  &__right-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 50%;
+    background: url("../images/about/about.webp") 0 23% / contain no-repeat;
+  }
+
+  &__newsletter-wrapper {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__newsletter-input {
+    width: 75.3%;
+    padding: 15px 23px;
+    border: none;
+    background-color: $shadeColor;
+
+    &::placeholder {
+      color: $defaultColor;
+    }
+  }
+
+  @include media(1130px) {
+    &__right-block {
+      background: url("../images/about/about-1024.webp") 0 14% / contain no-repeat;
+    }
+
+    &__newsletter-input {
+      width: 73.5%;
+    }
+  }
+
+  @include media(1024px) {
+    &__newsletter-wrapper {
+      display: block;
+      padding-bottom: 22px;
+    }
+
+    &__newsletter-input {
+      margin-right: 30px;
+      margin-bottom: 22px;
+    }
+  }
+
+  @include media(780px) {
+    padding-top: 32px;
+
+    &__right-block {
+      background: url("../images/about/about-768.webp") 0 14% / contain no-repeat;
+    }
+
+    &__newsletter-wrapper {
+      padding-bottom: 10px;
+    }
+
+    &__newsletter-input {
+      width: 100%;
+    }
+  }
+
+  @include media(640px) {
+    padding-bottom: 49px;
+    
+    &__container {
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    &__left-block {
+      width: 100%;
+    }
+
+    &__title {
+      font-size: 18px;
+      letter-spacing: 1.1px;
+    }
+
+    &__block-text {
+      font-size: 14px;
+      line-height: 1.78571;
+    }
+
+    &__newsletter-form {
+      padding-top: 110%;
+    }
+
+    &__newsletter-label {
+      margin-bottom: 17px;
+      font-size: 18px;
+    }
+
+    &__newsletter-input {
+      margin-right: 0;
+      margin-bottom: 20px;
+      padding: 11px 23px;
+
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+
+    &__right-block {
+      width: 100%;
+      background: url("../images/about/about-320.webp") 0 0 / contain no-repeat;
+    }
+
+    &__newsletter-btn {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+.nav {
+  margin-right: 90px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    margin-right: 79px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    color: $whiteColor;
+    box-shadow: 0 0 0 3px transparent;
+    outline: transparent;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      color: $accentColor;
+    }
+
+    &:focus-visible:not(:active) {
+      box-shadow: 0 0 0 3px $accentColor-2;
+      background-color: $accentColor-2;
+      color: $whiteColor;
+    }
+
+    &:active {
+      color: $accentColor-3;
+    }
+  }
+
+  @include media(1250px) {
+    margin-right: 56px;
+  }
+
+  @include media(1200px) {
+    &__item {
+      margin-right: 33px;
+    }
+  }
+
+  @include media(998px) {
+    position: absolute;
+    padding: 10px;
+    top: 83px;
+    left: 17px;
+    margin-right: 0;
+    width: 95.5%;
+
+    &__item {
+      margin-right: auto;
+    }
+  }
+
+  @include media(640px) {
+    display: none;
+  }
+}
+
+// бургер-меню
+.nav__mobile {
+  display: none;
+  position: absolute;
+  top: 71px;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 48px 21px 21px 21px;
+  background-color: $darkColor;
+  z-index: 20;
+
+  @include media(640px) {
+    .nav__list {
+      flex-direction: column;
+      align-items: start;
+      gap: 33px;
+    }
+  }
+}

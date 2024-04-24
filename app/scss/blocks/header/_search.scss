@@ -1,0 +1,148 @@
+.search {
+  display: flex;
+  outline: transparent;
+
+  &__btn {
+    margin-right: 3px;
+    outline: transparent;
+
+    &:focus-visible {
+      outline: 1px solid $accentColor-2;
+    }
+  }
+
+  &__svg {
+    padding-top: 3px;
+  }
+
+  &__label {
+    position: relative;
+    width: 172px;
+    cursor: text;
+
+    &::after {
+      @include pseudoElements(0, 0, 2px, 3px, 169px);
+      border-bottom: 1px solid $shadeLightColor;
+      transition: border-bottom 0.2s ease-in-out;
+    }
+
+    &:hover::after,
+    &:focus-within::after {
+      border-bottom: 1px solid $accentColor;
+    }
+
+    &:active::after {
+      border-bottom: 1px solid $accentColor-3;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    color: $whiteColor;
+
+    &::placeholder {
+      font-size: 14px;
+      color: $shadeLightColor;
+    }
+  }
+
+  @include media(1200px) {
+    &__label {
+      width: 200px;
+
+      &::after {
+        width: 197px;
+        bottom: 0;
+      }
+    }
+
+    &__input::placeholder {
+      font-size: 16px;
+    }
+  }
+
+  @include media(998px) {
+    &__label {
+      display: none;
+    }
+
+    &__btn {
+      margin-right: 0;
+
+      & svg {
+        transform: scale(1.5);
+      }
+    }
+  }
+
+  @include media(640px) {
+    &__btn {
+      padding-top: 0;
+      margin-right: -9px;
+
+      & svg {
+        transform: scale(1.3);
+      }
+    }
+  }
+}
+
+.search__mobile {
+  display: none;
+  background-color: $darkColor;
+  z-index: 10;
+
+  &-label {
+    display: none;
+    width: 320px;
+    height: 24px;
+
+    &::after {
+      width: 96%;
+      height: 100%;
+    }
+  }
+
+  @include media(640px) {
+    position: absolute;
+    align-items: center;
+    top: 22px;
+    left: 19px;
+
+    &-label {
+      width: 258px;
+      height: 22px;
+    }
+
+    &-input {
+      padding-top: 3px;
+
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.search__close-btn {
+  margin-right: 2px;
+  margin-bottom: 2px;
+
+  & use {
+    fill: $accentColor;
+  }
+
+  @include media(640px) {
+    margin-bottom: 3px;
+    //width: 18px;
+
+    & svg {
+      transform: scale(0.8);
+    }
+
+    & use {
+      fill: #c4c4c4;
+    }
+  }
+}

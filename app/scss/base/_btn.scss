@@ -1,0 +1,19 @@
+.btn {
+  @extend %button-styles;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+  &:focus-visible {
+    border-color: $accentColor-3;
+    background-color: $accentColor;
+  }
+
+  &:hover {
+    border-color: $accentColor-2;
+    background-color: $accentColor-2;
+  }
+
+  &:active {
+    border-color: $accentColor-3;
+    background-color: $accentColor-3;
+  }
+}

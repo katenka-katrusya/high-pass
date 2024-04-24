@@ -1,0 +1,39 @@
+.project {
+  @include sectionPaddings(40px, 40px);
+
+  &__title {
+    @extend %section-title;
+    margin-bottom: 12px;
+  }
+
+  &__list {
+    display: grid;
+  }
+
+  &__item {
+    min-height: 300px;
+  }
+
+  &__tag {
+    padding: 6px 14px;
+    background-color: #333;
+    color: $whiteColor;
+  }
+
+  &__date {
+    background-image: url("../images/icons/calendar-gray.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+    width: 12px;
+    height: 12px;
+  }
+
+  &__img-1 {
+    background-image: url("../images/projects/1.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: min(184px, 100%);
+    height: min(190px, 100%);
+  }
+}

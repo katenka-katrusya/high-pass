@@ -1,0 +1,41 @@
+// Миксины
+// Отступы между секциями
+@mixin sectionPaddings($top, $bottom) {
+  padding-top: $top;
+  padding-bottom: $bottom;
+}
+
+// Медиа запрос
+@mixin media($maxWidth) {
+  @media screen and (max-width: $maxWidth) {
+    @content;
+  }
+}
+
+// Псевдоэлементы
+@mixin pseudoElements($top, $right, $bottom, $left, $width) {
+  content: '';
+  position: absolute;
+  top: $top;
+  right: $right;
+  left: $left;
+  bottom: $bottom;
+  width: $width;
+}
+
+// Расширения
+// Кнопка
+%button-styles {
+  padding: 13px 19px;
+  border: solid 3px $accentColor;
+  font-weight: 700;
+  background-color: $accentColor;
+  color: $whiteColor;
+  outline: transparent;
+}
+
+%section-title {
+  font-weight: 700;
+  font-size: 24px;
+  color: $darkColor;
+}

@@ -1,0 +1,13 @@
+.container {
+  max-width: calc(#{$container-width} + (#{$container-padding} * 2));
+  padding: 0 #{$container-padding};
+  margin: 0 auto;
+
+  @include media(998px) {
+    padding: 0 27px;
+  }
+
+  @include media(640px) {
+    padding: 0 21px;
+  }
+}

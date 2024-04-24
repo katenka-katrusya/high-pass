@@ -1,0 +1,34 @@
+.social-list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  &__link {
+    outline: transparent;
+
+    & use {
+      fill: $defaultColor;
+      transition: fill 0.2s ease-in-out;
+    }
+
+    &:focus-visible use {
+      fill: $accentColor-2;
+    }
+
+    &:hover use {
+      fill: $accentColor;
+    }
+
+    &:active use {
+      fill: $accentColor-3;
+    }
+  }
+
+  @include media(1200px) {
+    gap: 21px;
+  }
+
+  @include media(998px) {
+    display: none;
+  }
+}

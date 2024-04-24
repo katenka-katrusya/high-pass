@@ -1,0 +1,163 @@
+doctype html
+
+include mixins.pug
+
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title High pass
+    link(rel="stylesheet" href="./css/main.css")
+    script(defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js")
+    script(defer src="./js/main.js")
+
+    // favicons
+    link(rel="apple-touch-icon" sizes="180x180" href="./images/favicons/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="./images/favicons/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="./images/favicons/favicon-16x16.png")
+    link(rel="manifest" crossorigin="use-credentials" href="site.webmanifest")
+    link(rel="mask-icon" href="./images/favicons/safari-pinned-tab.svg" color="#5bbad5")
+    link(rel="shortcut icon" href="favicon.ico")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="msapplication-config" content="browserconfig.xml")
+    meta(name="theme-color" content="#ffffff")
+  body
+    header.header
+      .header__top
+        .container.header__top-container
+          a.logo(href="#")
+            svg(width="191" height="31")
+              use(xlink:href="images/sprite.svg#logo")
+          nav.nav
+            ul.nav__list
+              +navList
+          nav.nav.nav__mobile
+            ul.nav__list.nav__mobile-list
+              +navList
+          ul.social-list
+            li.social-list__item
+              a.social-list__link(href="#" aria-label="Ссылка на instagram")
+                +socialIcons("30", "30", "inst")
+            li.social-list__item
+              a.social-list__link(href="#" aria-label="Ссылка на facebook")
+                +socialIcons("30", "30", "facebook")
+            li.social-list__item
+              a.social-list__link(href="#" aria-label="Ссылка на Вконтакте")
+                +socialIcons("30", "30", "vk")
+          .search.search__mobile
+            label.search__label.search__mobile-label(aria-label="Введите поиск")
+              input.search__input.search__mobile-input(type="text" id="searchInput" placeholder="Что будем искать?")
+            button.search__close-btn
+              svg.search__close-svg(width="23" height="23")
+                use(xlink:href="images/sprite.svg#close-svg")
+      .header__bottom
+        .container.header__bottom-container
+          .header__bottom-container.header__bottom-container_mobile.mobile
+            .burger
+              button.burger__button
+                svg.burger__button_open(width="20" height="18")
+                  use(xlink:href="images/sprite.svg#burger")
+                svg.burger__button_close(width="23" height="23")
+                  use(xlink:href="images/sprite.svg#close-svg")
+              //button.burger__button_open
+              //  svg.burger__svg(width="20" height="18")
+              //    use(xlink:href="images/sprite.svg#burger")
+              //button.burger__button_close
+              //  svg.search__close-svg(width="23" height="23")
+              //    use(xlink:href="images/sprite.svg#close-svg")
+            .phone.phone__mobile
+              a.phone__link(href="tel:+749542423532")
+                svg.phone__link-svg(width="18" height="18")
+                  use(xlink:href="images/sprite.svg#phone")
+                span.phone__link-tel +7 (495) 42-423-532
+          .header__bottom-wrapper
+            .phone
+              a.phone__link(href="tel:+749542423532")
+                svg.phone__link-svg(width="18" height="18")
+                  use(xlink:href="images/sprite.svg#phone")
+                span.phone__link-tel +7 (495) 42-423-532
+            .search
+              button.search__btn
+                svg.search__svg(width="17" height="17")
+                  use(xlink:href="images/sprite.svg#loupe")
+              label.search__label(aria-label="Введите поиск")
+                input.search__input(type="text" id="searchInput" placeholder="Что будем искать?")
+    main
+      section.hero
+        .container.hero__container
+          h1.visually-hidden Фотостудия High pass
+          .hero__block-poster.block-poster
+            span.block-poster__tag #мастеркласс
+            span.block-poster__author Мастер-класс от Игоря Робова
+            h2.block-poster__title Неоновый фотосет 2.0 7 июля 20:00
+            button.btn.block-poster__btn Узнать больше
+          h2.hero__block-title Работы участников предыдущего мастер-класса
+          picture.hero__picture.hero__picture_wide
+            +pictureSample('640px', '998px', '1200px', 'images/hero/', 'hero-2', 'Фото девушки с голубой неоновой подсветкой')
+          picture.hero__picture.hero__picture_min
+            +pictureSample('640px', '998px', '1200px', 'images/hero/', 'hero-3', 'Фото девушки с сине-красной неоновой подсветкой')
+          picture.hero__picture.hero__picture_min
+            +pictureSample('640px', '998px', '1200px', 'images/hero/', 'hero-4', 'Фото девушки с разноцветной неоновой подсветкой')
+      section.about(id="about")
+        .container.about__container
+          .about__left-block
+            h2.about__title О студии
+            p.about__block-text
+              | В&nbsp;рамках спецификации современных стандартов, интерактивные прототипы, инициированные исключительно синтетически,
+              | ограничены исключительно образом мышления. Предварительные выводы неутешительны:
+              | высокотехнологичная концепция общественного уклада требует от&nbsp;нас анализа соответствующих условий активизации!
+              | Следует отметить, что семантический разбор внешних противодействий фиксирует необходимость распределения внутренних резервов
+              | и&nbsp;ресурсов. Безусловно,&nbsp;граница обучения кадров предоставляет широкие возможности для первоочередных требований.
+              | Повседневная практика показывает, что глубокий уровень погружения предполагает независимые способы реализации
+              | новых принципов формирования материально-&nbsp;технической и&nbsp;кадровой базы. Приятно, граждане, наблюдать,
+              | как явные признаки институционализации являются только методом политического участия и&nbsp;нарушающими общечеловеческие нормы этики.
+          .about__right-block
+            form.about__newsletter-form(action="" method="POST")
+              label.about__newsletter-label(for="about__email" aria-label="Подписаться на рассылку") Подписаться на рассылку
+              .about__newsletter-wrapper
+                input.about__newsletter-input(id="about__email" type="text" placeholder="E-mail" pattern="[^@\s]+@[^@\s]+\.[^@\s]+")
+                button.btn.about__newsletter-btn(type="submit") Отправить
+      section.project(id="projects")
+        .container.project__container
+          h2.project__title Наши проекты
+          ul.project__list
+            li.project__item
+              .project__img.project__img-1
+              span.project__tag #пейзаж
+              p.project__description Синтетически, смешаны с не уникальными данными до степени…
+              time.project__date(datetime="06-16") 16 июня
+            li.project__item
+              .project__item-img.project__item-img-2
+              span.project__tag #портрет
+              p.project__description В своём стремлении улучшить опыт мы упускаем, что явные...
+              time.project__date(datetime="05-28") 28 мая
+            li.project__item
+              .project__item-img.project__item-img-3
+              span.project__tag #предмет
+              p.project__description Равным образом, высокое качество позиционных…
+              time.project__date(datetime="05-14") 14 мая
+            li.project__item
+              .project__item-big
+              span.project__tag #fuji
+              time.project__date(datetime="04-09") 9 апреля
+              h3.project__item-title Cемантический разбор
+              p.project__description В рамках спецификации современных стандартов, интерактивные прототипы
+              button.btn.project__btn О проекте
+            li.project__item
+              .project__item-big
+              span.project__tag #проектзабвение
+              time.project__date(datetime="03-20") 20 марта
+              h3.project__item-title Забвение
+              p.project__description Играет важную роль в формировании глубокомысленных рассуждений
+              button.btn.project__btn О проекте
+            li.project__item
+              .project__item-img.project__item-img_6
+              span.project__tag #ретушь
+              p.project__description Как принято считать, многие известные личности и по сей день остаются уделом либералов…
+              time.project__date(datetime="03-09") 9 марта
+            li.project__item
+              .project__item-img.project__item-img_7
+              span.project__tag #портрет
+              p.project__description С учётом сложившейся международной обстановки, новая модель организационной…
+              time.project__date(datetime="03-01") 1 марта

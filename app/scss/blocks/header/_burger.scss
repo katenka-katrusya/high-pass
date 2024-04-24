@@ -1,0 +1,18 @@
+.burger {
+  display: none;
+
+  @include media(640px) {
+    display: block;
+  }
+}
+
+.burger__button {
+  &_close {
+    display: none;
+    position: absolute;
+    top: 84px;
+    width: 18px;
+    fill: #808080;
+    z-index: 20;
+  }
+}

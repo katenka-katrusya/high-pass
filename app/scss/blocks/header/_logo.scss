@@ -1,0 +1,23 @@
+.logo {
+  margin-right: auto;
+  width: 191px;
+  height: 31px;
+  outline: transparent;
+
+  &:focus-visible {
+    outline: 1px solid $accentColor-2;
+    outline-offset: 3px;
+  }
+
+  @include media(1200px) {
+    width: 166px;
+    height: 26px;
+  }
+
+  @include media(640px) {
+    & svg {
+      width: 112px;
+      height: 18px;
+    }
+  }
+}

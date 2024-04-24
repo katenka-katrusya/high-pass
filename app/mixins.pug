@@ -1,0 +1,50 @@
+mixin socialIcons(width, height, name)
+  svg(width= width height= height)
+    use(href=`images/sprite.svg#${name}`)
+
+mixin pictureSample(maxWidth1, maxWidth2, maxWidth3, folder, imageName, altText)
+  source(
+    media=`max-width: ${maxWidth1}`
+    srcset=`${folder}${imageName}-320.webp 1x, ${folder}${imageName}-320-2x.webp 2x`
+    type="image/webp")
+  source(
+    media=`(max-width: ${maxWidth1})`
+    srcset=`${folder}${imageName}-320.jpg 1x, ${folder}${imageName}-320-2x.jpg 2x`)
+  source(
+    media=`max-width: ${maxWidth2}`
+    srcset=`${folder}${imageName}-768.webp 1x, ${folder}${imageName}-768-2x.webp 2x`
+    type="image/webp")
+  source(
+    media=`(max-width: ${maxWidth2})`
+    srcset=`${folder}${imageName}-768.jpg 1x, ${folder}${imageName}-768-2x.jpg 2x`)
+  source(
+    media=`max-width: ${maxWidth3}`
+    srcset=`${folder}${imageName}-1024.webp 1x, ${folder}${imageName}-1024.webp 2x`
+    type="image/webp")
+  source(
+    media=`(max-width: ${maxWidth3})`
+    srcset=`${folder}${imageName}-1024.jpg 1x, ${folder}${imageName}-1024-2x.jpg 2x`)
+  source(
+    srcset=`${folder}${imageName}.webp 1x, ${folder}${imageName}-2x.webp 2x`
+    type="image/webp")
+  img.hero__img(
+    src=`${folder}${imageName}.jpg 1x`
+    srcset=`${folder}${imageName}-2x.jpg 2x` alt=`${altText}`)
+
+mixin navList
+  - var titles = {'О студии': 'about','Наши проекты': 'projects','Услуги': 'services','Мастер-классы': 'workshops','Контакты': 'contacts'}
+  each value, index in titles
+    li.nav__item
+      a.nav__link(href="#" + value)= index
+
+//mixin projectCard(tag, description, date)
+//  span.project__tag= tag
+//  p.project__description= description
+//  time.project__date= date
+//
+//mixin projectCardBig(tag, date, title, description)
+//  span.project__tag= tag
+//  time.project__date= date
+//  h3.project__title= title
+//  p.project__description= description
+//  button.btn.project__btn= "О проекте"
