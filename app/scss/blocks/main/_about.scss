@@ -68,6 +68,7 @@
   }
 
   @include media(1024px) {
+    @include sectionPaddings(30px, 124px);
     &__newsletter-wrapper {
       display: block;
       padding-bottom: 22px;
@@ -80,7 +81,7 @@
   }
 
   @include media(780px) {
-    padding-top: 32px;
+    @include sectionPaddings(32px, 61px);
 
     &__right-block {
       background: url("../images/about/about-768.webp") 0 14% / contain no-repeat;
@@ -97,7 +98,7 @@
 
   @include media(640px) {
     padding-bottom: 49px;
-    
+
     &__container {
       flex-direction: column;
       gap: 22px;

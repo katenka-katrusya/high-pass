@@ -122,42 +122,77 @@ html(lang="ru")
         .container.project__container
           h2.project__title Наши проекты
           ul.project__list
-            li.project__item
-              .project__img.project__img-1
+            li.project__item.project__item-img.project__item-img_1
               span.project__tag #пейзаж
-              p.project__description Синтетически, смешаны с не уникальными данными до степени…
+              p.project__description Синтетически, смешаны с не уникальными данными до степени…
               time.project__date(datetime="06-16") 16 июня
-            li.project__item
-              .project__item-img.project__item-img-2
+            li.project__item.project__item-img.project__item-img_2
               span.project__tag #портрет
               p.project__description В своём стремлении улучшить опыт мы упускаем, что явные...
               time.project__date(datetime="05-28") 28 мая
-            li.project__item
-              .project__item-img.project__item-img-3
+            li.project__item.project__item-img.project__item-img_3
               span.project__tag #предмет
               p.project__description Равным образом, высокое качество позиционных…
               time.project__date(datetime="05-14") 14 мая
-            li.project__item
-              .project__item-big
+            li.project__item.project__item-big.project__item-big_1
               span.project__tag #fuji
-              time.project__date(datetime="04-09") 9 апреля
+              time.project__date.project__date_white(datetime="04-09") 9 апреля
               h3.project__item-title Cемантический разбор
-              p.project__description В рамках спецификации современных стандартов, интерактивные прототипы
+              p.project__description.project__description_big В рамках спецификации современных стандартов, интерактивные прототипы
               button.btn.project__btn О проекте
-            li.project__item
-              .project__item-big
+            li.project__item.project__item-img.project__item-img_4
+              span.project__tag #пейзаж
+              p.project__description Равным образом, сложившаяся структура организации...
+              time.project__date(datetime="02-15") 15 февраля
+            li.project__item.project__item-big.project__item-big_2
               span.project__tag #проектзабвение
-              time.project__date(datetime="03-20") 20 марта
+              time.project__date.project__date_white(datetime="03-20") 20 марта
               h3.project__item-title Забвение
-              p.project__description Играет важную роль в формировании глубокомысленных рассуждений
+              p.project__description.project__description_big Играет важную роль в формировании глубокомысленных рассуждений
               button.btn.project__btn О проекте
-            li.project__item
-              .project__item-img.project__item-img_6
+            li.project__item.project__item-mid.project__item-img.project__item-img_6
               span.project__tag #ретушь
-              p.project__description Как принято считать, многие известные личности и по сей день остаются уделом либералов…
+              p.project__description.project__description_mid Как принято считать, многие известные личности и по сей день остаются уделом либералов…
               time.project__date(datetime="03-09") 9 марта
-            li.project__item
-              .project__item-img.project__item-img_7
+            li.project__item.project__item-mid.project__item-img.project__item-img_7
               span.project__tag #портрет
-              p.project__description С учётом сложившейся международной обстановки, новая модель организационной…
+              p.project__description.project__description_mid С учётом сложившейся международной обстановки, новая модель организационной…
               time.project__date(datetime="03-01") 1 марта
+
+          ul.project__list.project__list-two
+            li.project__item.project__item-big.project__item-big_two1
+              span.project__tag #портрет
+              time.project__date.project__date_white(datetime="02-24") 24 февраля
+              h3.project__item-title Спорная точка зрения
+              p.project__description.project__description_big Ясность нашей позиции очевидна: убеждённость некоторых оппонентов
+              button.btn.project__btn О проекте
+            li.project__item.project__item-mid.project__item-img.project__item-img_two2
+              span.project__tag #ретушь
+              p.project__description.project__description_mid Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов...
+              time.project__date(datetime="02-20") 20 февраля
+            li.project__item.project__item-mid.project__item-img.project__item-img_two3
+              span.project__tag #портрет
+              p.project__description.project__description_mid Прежде всего, повышение уровня гражданского сознания говорит о возможностях приоритизации...
+              time.project__date(datetime="02-18") 18 февраля
+            li.project__item.project__item-img.project__item-img_two4
+              span.project__tag #пейзаж
+              p.project__description Равным образом, сложившаяся структура организации...
+              time.project__date(datetime="02-15") 15 февраля
+            li.project__item.project__item-img.project__item-img_two5
+              span.project__tag #предмет
+              p.project__description Безусловно, реализация намеченных плановых заданий обеспечивает...
+              time.project__date(datetime="02-10") 10 февраля
+            li.project__item.project__item-img.project__item-img_two6
+              span.project__tag #пейзаж
+              p.project__description Безусловно, курс на социальный национальный...
+              time.project__date(datetime="02-07") 7 февраля
+            li.project__item.project__item-big.project__item-big_two7
+              span.project__tag #проектджаз
+              time.project__date.project__date_white(datetime="02-02") 2 февраля
+              h3.project__item-title Задания по разработке своевременного
+              p.project__description.project__description_big Повседневная практика показывает, что сложившаяся структура организации играет важную роль
+              button.btn.project__btn О проекте
+
+          .project__btn-wrapper
+            button.btn.project__btn-tab.project__btn-tab_active 1
+            button.btn.project__btn-tab 2
