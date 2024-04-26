@@ -56,16 +56,10 @@ html(lang="ru")
           .header__bottom-container.header__bottom-container_mobile.mobile
             .burger
               button.burger__button
-                svg.burger__button_open(width="20" height="18")
+                svg.burger__open(width="20" height="18")
                   use(xlink:href="images/sprite.svg#burger")
-                svg.burger__button_close(width="23" height="23")
+                svg.burger__close(width="23" height="23")
                   use(xlink:href="images/sprite.svg#close-svg")
-              //button.burger__button_open
-              //  svg.burger__svg(width="20" height="18")
-              //    use(xlink:href="images/sprite.svg#burger")
-              //button.burger__button_close
-              //  svg.search__close-svg(width="23" height="23")
-              //    use(xlink:href="images/sprite.svg#close-svg")
             .phone.phone__mobile
               a.phone__link(href="tel:+749542423532")
                 svg.phone__link-svg(width="18" height="18")
@@ -113,14 +107,19 @@ html(lang="ru")
               | новых принципов формирования материально-&nbsp;технической и&nbsp;кадровой базы. Приятно, граждане, наблюдать,
               | как явные признаки институционализации являются только методом политического участия и&nbsp;нарушающими общечеловеческие нормы этики.
           .about__right-block
-            form.about__newsletter-form(action="" method="POST")
+            form.about__newsletter-form(action="#" method="POST")
               label.about__newsletter-label(for="about__email" aria-label="Подписаться на рассылку") Подписаться на рассылку
               .about__newsletter-wrapper
-                input.about__newsletter-input(id="about__email" type="text" placeholder="E-mail" pattern="[^@\s]+@[^@\s]+\.[^@\s]+")
+                input.about__newsletter-input(id="about__email" type="email" placeholder="E-mail" pattern="[^@\s]+@[^@\s]+\.[^@\s]+")
                 button.btn.about__newsletter-btn(type="submit") Отправить
       section.project(id="projects")
         .container.project__container
           h2.project__title Наши проекты
+          .project__mobile
+            h2.project__title.project__mobile-title Наши проекты
+            .project__btn-wrapper.project__btn-wrapper_top
+              button.btn.project__btn-tab.project__btn-tab_active 1
+              button.btn.project__btn-tab 2
           ul.project__list
             li.project__item.project__item-img.project__item-img_1
               span.project__tag #пейзаж
@@ -135,21 +134,23 @@ html(lang="ru")
               p.project__description Равным образом, высокое качество позиционных…
               time.project__date(datetime="05-14") 14 мая
             li.project__item.project__item-big.project__item-big_1
-              span.project__tag #fuji
-              time.project__date.project__date_white(datetime="04-09") 9 апреля
-              h3.project__item-title Cемантический разбор
-              p.project__description.project__description_big В рамках спецификации современных стандартов, интерактивные прототипы
-              button.btn.project__btn О проекте
+              .project__wrapper-content
+                span.project__tag #fuji
+                time.project__date.project__date_white(datetime="04-09") 9 апреля
+                h3.project__item-title Cемантический разбор
+                p.project__description.project__description-big В рамках спецификации современных стандартов, интерактивные прототипы
+                button.btn.project__btn О проекте
             li.project__item.project__item-img.project__item-img_4
               span.project__tag #пейзаж
               p.project__description Равным образом, сложившаяся структура организации...
               time.project__date(datetime="02-15") 15 февраля
             li.project__item.project__item-big.project__item-big_2
-              span.project__tag #проектзабвение
-              time.project__date.project__date_white(datetime="03-20") 20 марта
-              h3.project__item-title Забвение
-              p.project__description.project__description_big Играет важную роль в формировании глубокомысленных рассуждений
-              button.btn.project__btn О проекте
+              .project__wrapper-content
+                span.project__tag.project__tag_big2 #проектзабвение
+                time.project__date.project__date_white(datetime="03-20") 20 марта
+                h3.project__item-title Забвение
+                p.project__description.project__description-big.project__description-big_2 Играет важную роль в формировании глубокомысленных рассуждений
+                button.btn.project__btn О проекте
             li.project__item.project__item-mid.project__item-img.project__item-img_6
               span.project__tag #ретушь
               p.project__description.project__description_mid Как принято считать, многие известные личности и по сей день остаются уделом либералов…
@@ -161,11 +162,12 @@ html(lang="ru")
 
           ul.project__list.project__list-two
             li.project__item.project__item-big.project__item-big_two1
-              span.project__tag #портрет
-              time.project__date.project__date_white(datetime="02-24") 24 февраля
-              h3.project__item-title Спорная точка зрения
-              p.project__description.project__description_big Ясность нашей позиции очевидна: убеждённость некоторых оппонентов
-              button.btn.project__btn О проекте
+              .project__wrapper-content
+                span.project__tag #портрет
+                time.project__date.project__date_white(datetime="02-24") 24 февраля
+                h3.project__item-title Спорная точка зрения
+                p.project__description.project__description-big Ясность нашей позиции очевидна: убеждённость некоторых оппонентов
+                button.btn.project__btn О проекте
             li.project__item.project__item-mid.project__item-img.project__item-img_two2
               span.project__tag #ретушь
               p.project__description.project__description_mid Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов...
@@ -187,12 +189,16 @@ html(lang="ru")
               p.project__description Безусловно, курс на социальный национальный...
               time.project__date(datetime="02-07") 7 февраля
             li.project__item.project__item-big.project__item-big_two7
-              span.project__tag #проектджаз
-              time.project__date.project__date_white(datetime="02-02") 2 февраля
-              h3.project__item-title Задания по разработке своевременного
-              p.project__description.project__description_big Повседневная практика показывает, что сложившаяся структура организации играет важную роль
-              button.btn.project__btn О проекте
+              .project__wrapper-content
+                span.project__tag #проектджаз
+                time.project__date.project__date_white(datetime="02-02") 2 февраля
+                h3.project__item-title Задания по разработке своевременного
+                p.project__description.project__description-big Повседневная практика показывает, что сложившаяся структура организации играет важную роль
+                button.btn.project__btn О проекте
 
           .project__btn-wrapper
             button.btn.project__btn-tab.project__btn-tab_active 1
             button.btn.project__btn-tab 2
+
+      section.services(id="services")
+        .container.services__container

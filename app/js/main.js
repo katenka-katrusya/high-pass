@@ -3,8 +3,8 @@
 const searchBtn = document.querySelector('.search__btn');
 const searchCloseBtn = document.querySelector('.search__close-btn');
 const phone = document.querySelector('.phone');
-const openBurger = document.querySelector('.burger__button_open');
-const closeBurger = document.querySelector('.burger__button_close');
+const openBurger = document.querySelector('.burger__open');
+const closeBurger = document.querySelector('.burger__close');
 const navLinks = document.querySelectorAll('.nav__mobile-link');
 const tl = gsap.timeline();
 
@@ -90,5 +90,6 @@ function clickOnBergerLink() {
 }
 
 clickOnBergerLink();
+
 
 

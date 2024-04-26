@@ -49,11 +49,24 @@
   &__newsletter-input {
     width: 75.3%;
     padding: 15px 23px;
-    border: none;
+    border: 1px solid transparent;
     background-color: $shadeColor;
+    color: $whiteColor;
 
     &::placeholder {
       color: $defaultColor;
+
+      &:hover {
+        color: $accentColor;
+      }
+    }
+
+    &:focus-visible {
+      border: 1px solid $accentColor;
+    }
+
+    &:active {
+      border: 1px solid transparent;
     }
   }
 

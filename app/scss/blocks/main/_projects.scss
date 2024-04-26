@@ -43,7 +43,7 @@
     }
 
     &-big {
-      align-items: start;
+      //align-items: start;
       padding: 26px 30px 30px 29px;
       background-repeat: no-repeat;
       background-size: cover;
@@ -82,6 +82,13 @@
     }
   }
 
+  &__wrapper-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    //height: 100%;
+  }
+
   &__tag {
     position: absolute;
     top: 8px;
@@ -98,7 +105,7 @@
     line-height: 22px;
     color: $darkColor;
 
-    &_big {
+    &-big {
       width: 51.1%;
       color: $whiteColor;
     }
@@ -133,6 +140,10 @@
     display: flex;
     justify-content: center;
     gap: 30px;
+
+    &_top {
+      display: none;
+    }
   }
 
   &__btn-tab {
@@ -184,6 +195,15 @@
   &__item-big_two7 {
     grid-column: span 2;
     background-image: url("../images/projects/tab-two7.webp");
+  }
+
+  //мобильные табы
+  &__mobile {
+    display: none;
+  }
+
+  &__btn-wrapper_top {
+    display: none;
   }
 
   @include media(1024px) {
@@ -254,7 +274,7 @@
       }
     }
 
-    &__description_big {
+    &__description-big {
       width: 55%;
     }
 
@@ -264,7 +284,6 @@
 
     // второй список
     &__list-two {
-      display: none;
       grid-template-columns: repeat(8, 110fr);
     }
 
@@ -311,7 +330,6 @@
   }
 
   @include media(780px) {
-
     &__list {
       grid-template-columns: repeat(6, 110fr);
       gap: 28.5px 30px;
@@ -321,12 +339,8 @@
       width: 45%;
     }
 
-    &__description_big {
+    &__description-big {
       width: 45%;
-    }
-
-    &__item-img {
-      //grid-column: span 1;
     }
 
     &__item-img_4 {
@@ -340,10 +354,204 @@
 
     &__item-big_2 {
       grid-column: span 6;
+      background-image: url("../images/projects/big2-768.webp");
     }
 
     &__btn-wrapper {
       gap: 20px;
+    }
+
+    //  второй список
+    &__item-big_two1 {
+      grid-column: span 6;
+      background-image: url("../images/projects/tab-two1-768.webp");
+      order: 4;
+    }
+
+    &__item-img_two2 {
+      order: 5;
+    }
+
+    &__item-img_two3 {
+      order: 5;
+    }
+
+    &__item-img_two4 {
+      display: flex;
+      order: 1;
+    }
+
+    &__item-big_two7 {
+      grid-column: span 6;
+      background-image: url("../images/projects/tab-two7-768.webp");
+      order: 7;
+    }
+
+  }
+
+  @include media(640px) {
+    @include sectionPaddings(32px, 40px);
+
+    &__list {
+      grid-template-columns: 1fr;
+      gap: 27px;
+    }
+
+    &__title {
+      display: none;
+    }
+
+    // мобильные табы
+    &__mobile {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+
+      &-title {
+        display: block;
+        margin-bottom: 0;
+        margin-right: auto;
+        font-size: 18px;
+      }
+    }
+
+    &__btn-wrapper {
+      display: none;
+    }
+
+    &__btn-wrapper_top {
+      display: flex;
+      gap: 10px;
+    }
+
+    &__tag {
+      top: 5px;
+      right: 5px;
+      padding: 4.5px 14.8px;
+      font-size: 12px;
+
+      &_big2 {
+        font-size: 14px;
+      }
+    }
+
+    &__item {
+      min-height: 273px;
+
+      &-title {
+        width: 100%;
+      }
+    }
+
+    &__item-img {
+      grid-column: 1;
+      padding-top: 73%;
+    }
+
+    &__item-big {
+      padding: 23px 30px 32px 29px;
+      min-height: 422px;
+      justify-content: flex-end;
+
+      &_2 {
+        padding: 23px 30px 31px 29px;
+        min-height: 426px;
+      }
+    }
+
+    &__date_white {
+      margin-bottom: 10px;
+    }
+
+    &__item-img_1 {
+      background-image: url("../images/projects/1-320.webp");
+    }
+
+    &__item-img_2 {
+      background-image: url("../images/projects/2-320.webp");
+    }
+
+    &__item-img_3 {
+      background-image: url("../images/projects/3-320.webp");
+    }
+
+    &__item-big_1 {
+      grid-column: 1;
+      background-image: url("../images/projects/big1-320.webp");
+    }
+
+    &__item-big_2 {
+      grid-column: 1;
+      background-image: url("../images/projects/big2-320.webp");
+    }
+
+    &__item-img_6 {
+      background-image: url("../images/projects/6-320.webp");
+    }
+
+    &__item-img_7 {
+      background-image: url("../images/projects/7-320.webp");
+    }
+
+    &__description_mid {
+      margin-bottom: 14px;
+    }
+
+    &__description-big {
+      width: 100%;
+      margin-bottom: 17px;
+      font-size: 14px;
+      line-height: 19px;
+
+      &_2 {
+        margin-bottom: 23px;
+      }
+    }
+
+    &__btn {
+      padding: 9px 19px;
+      font-size: 14px;
+    }
+
+    &__btn-tab {
+      width: 24px;
+      height: 24px;
+    }
+
+
+    //  второй список
+    &__list {
+      grid-template-columns: 1fr;
+    }
+
+    &__item-big_two1 {
+      grid-column: 1;
+      background-image: url("../images/projects/tab-two1-320.webp");
+    }
+
+    &__item-img_two2 {
+      background-image: url("../images/projects/tab-two2-320.webp");
+    }
+
+    &__item-img_two3 {
+      background-image: url("../images/projects/tab-two3-320.webp");
+    }
+
+    &__item-img_two4 {
+      background-image: url("../images/projects/tab-two4-320.webp");
+    }
+
+    &__item-img_two5 {
+      background-image: url("../images/projects/tab-two5-320.webp");
+    }
+
+    &__item-img_two6 {
+      background-image: url("../images/projects/tab-two6-320.webp");
+    }
+
+    &__item-big_two7 {
+      grid-column: 1;
+      background-image: url("../images/projects/tab-two7-320.webp");
     }
   }
 }
