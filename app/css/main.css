@@ -1034,23 +1034,29 @@ body .visually-hidden {
   gap: 30px;
 }
 .about__newsletter-input {
+  position: relative;
   width: 75.3%;
   padding: 15px 23px;
   border: 1px solid transparent;
   background-color: #4a4a4a;
   color: #fff;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 .about__newsletter-input::placeholder {
   color: #cacaca;
+  transition: color 0.3s ease-in-out;
 }
-.about__newsletter-input::placeholder:hover {
+.about__newsletter-input:focus-visible:not(.just-validate-error-field) {
+  border-color: #ff6e30;
+}
+.about__newsletter-input:hover::placeholder {
   color: #ff6e30;
 }
-.about__newsletter-input:focus-visible {
-  border: 1px solid #ff6e30;
-}
 .about__newsletter-input:active {
-  border: 1px solid transparent;
+  border-color: transparent;
+}
+.about__newsletter-input:active::placeholder {
+  color: #cacaca;
 }
 @media screen and (max-width: 1130px) {
   .about__right-block {
@@ -1133,6 +1139,20 @@ body .visually-hidden {
   }
 }
 
+.just-validate-error-label {
+  position: absolute;
+  padding: 4px 23px;
+  font-size: 9px;
+  color: #f06666 !important;
+}
+
+.just-validate-error-field {
+  border-color: #f06666;
+}
+.just-validate-error-field::placeholder {
+  color: #cacaca;
+}
+
 .project {
   padding-top: 42px;
   padding-bottom: 40px;
@@ -1142,10 +1162,13 @@ body .visually-hidden {
   font-family: "TT Firs Neue", sans-serif;
 }
 .project__list {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(3, 191fr) repeat(2, 300fr);
   gap: 31px 30px;
   margin-bottom: 49px;
+}
+.project__list_active {
+  display: grid;
 }
 .project__item {
   position: relative;
@@ -1267,7 +1290,6 @@ body .visually-hidden {
   color: #fff;
 }
 .project__list-two {
-  display: none;
   grid-template-columns: repeat(3, 191fr) repeat(2, 300fr);
 }
 .project__item-big_two1 {
@@ -1573,6 +1595,47 @@ body .visually-hidden {
     grid-column: 1;
     background-image: url("../images/projects/tab-two7-320.webp");
   }
+}
+
+.services {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.services__left-block {
+  border-right: 30px;
+}
+.services__title {
+  margin-bottom: 10px;
+  font-family: "TT Firs Neue", sans-serif;
+}
+.services__slider-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  width: 30%;
+  overflow-x: hidden;
+}
+.services__slide {
+  color: #666;
+  font-weight: 700;
+}
+.services__slide_active {
+  color: #ff6e30;
+}
+.services__slider {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  bottom: 0;
+  background-color: #c4c4c4;
+}
+.services__slider_active {
+  position: absolute;
+  height: 4px;
+  width: 38%;
+  bottom: 0;
+  background-color: #ff6e30;
 }
 
 /*# sourceMappingURL=main.css.map */

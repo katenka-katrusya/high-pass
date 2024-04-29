@@ -92,4 +92,78 @@ function clickOnBergerLink() {
 clickOnBergerLink();
 
 
+// валидация формы подписки
+function checkFormNewsletter() {
+  const validator = new window.JustValidate('.about__newsletter-form');
 
+  validator
+    .addField('.about__newsletter-input', [
+      {
+        rule: 'email',
+        errorMessage: 'Недопустимый формат',
+      },
+    ]);
+
+  // очистка поля после отправки формы
+  const formNewsletter = document.querySelector('.about__newsletter-form');
+  formNewsletter.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formNewsletter.reset();
+  });
+}
+
+checkFormNewsletter();
+
+
+// переключение табов
+function switchTabs() {
+  const tabs = document.querySelectorAll('.project__btn-tab');
+  const contents = document.querySelectorAll('.project__list');
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+
+      removeClass(tabs, 'project__btn-tab_active');
+      removeClass(contents, 'project__list_active');
+
+      tab.classList.add('project__btn-tab_active');
+
+      const textTub = tab.textContent.trim();
+
+      contents.forEach((content) => {  // 1 таб === 1 список, 2 таб === 2 список
+        if (content.dataset.tabNum === textTub) {
+          content.classList.add('project__list_active');
+        }
+      });
+    });
+  });
+}
+
+switchTabs();
+
+function removeClass(elements, className) {
+  elements.forEach((item) => {
+    item.classList.remove(className);
+  });
+}
+
+
+// slider
+function slider(activeSlide = 0) {
+  const slides = document.querySelectorAll('.services__slide');
+  const sliderActive = document.querySelector('.services__slider_active');
+
+  slides[activeSlide].classList.add('services__slide_active');
+
+  slides.forEach((slide) => {
+    slide.addEventListener('click', () => {
+
+      removeClass(slides, 'services__slide_active');
+      slide.classList.add('services__slide_active');
+
+      tl.to(sliderActive, { duration: 0.5, x: slide.offsetLeft, ease: 'power3.out' });
+    });
+  });
+}
+
+slider(0);

@@ -8,10 +8,14 @@
   }
 
   &__list {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(3, 191fr) repeat(2, 300fr);
     gap: 31px 30px;
     margin-bottom: 49px;
+
+    &_active {
+      display: grid;
+    }
   }
 
   &__item {
@@ -152,7 +156,7 @@
     height: 30px;
     font-weight: 400;
     border-color: transparent;
-    background-color: #c4c4c4;
+    background-color: $lightDefaultColor;
     color: #223444;
 
     &_active {
@@ -163,7 +167,6 @@
 
   // второй список
   &__list-two {
-    display: none;
     grid-template-columns: repeat(3, 191fr) repeat(2, 300fr);
   }
 
@@ -555,6 +558,5 @@
     }
   }
 }
-
 
 

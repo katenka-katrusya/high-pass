@@ -10,6 +10,7 @@ html(lang="ru")
     title High pass
     link(rel="stylesheet" href="./css/main.css")
     script(defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js")
+    script(defer src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js")
     script(defer src="./js/main.js")
 
     // favicons
@@ -107,10 +108,10 @@ html(lang="ru")
               | новых принципов формирования материально-&nbsp;технической и&nbsp;кадровой базы. Приятно, граждане, наблюдать,
               | как явные признаки институционализации являются только методом политического участия и&nbsp;нарушающими общечеловеческие нормы этики.
           .about__right-block
-            form.about__newsletter-form(action="#" method="POST")
+            form.about__newsletter-form(action="https://jsonplaceholder.typicode.com/posts" method="POST")
               label.about__newsletter-label(for="about__email" aria-label="Подписаться на рассылку") Подписаться на рассылку
               .about__newsletter-wrapper
-                input.about__newsletter-input(id="about__email" type="email" placeholder="E-mail" pattern="[^@\s]+@[^@\s]+\.[^@\s]+")
+                input.about__newsletter-input(id="about__email" type="text" placeholder="E-mail" name="email" aria-label="Введите свой Email")
                 button.btn.about__newsletter-btn(type="submit") Отправить
       section.project(id="projects")
         .container.project__container
@@ -120,7 +121,7 @@ html(lang="ru")
             .project__btn-wrapper.project__btn-wrapper_top
               button.btn.project__btn-tab.project__btn-tab_active 1
               button.btn.project__btn-tab 2
-          ul.project__list
+          ul.project__list.project__list-one.project__list_active(data-tab-num="1")
             li.project__item.project__item-img.project__item-img_1
               span.project__tag #пейзаж
               p.project__description Синтетически, смешаны с не уникальными данными до степени…
@@ -160,7 +161,7 @@ html(lang="ru")
               p.project__description.project__description_mid С учётом сложившейся международной обстановки, новая модель организационной…
               time.project__date(datetime="03-01") 1 марта
 
-          ul.project__list.project__list-two
+          ul.project__list.project__list-two(data-tab-num="2")
             li.project__item.project__item-big.project__item-big_two1
               .project__wrapper-content
                 span.project__tag #портрет
@@ -202,3 +203,18 @@ html(lang="ru")
 
       section.services(id="services")
         .container.services__container
+          .services__left-block
+            h2.services__title Услуги студии
+            .services__slider-wrapper
+              .services__slide Основной перечень
+              .services__slide Услуги по ретуши
+              .services__slider
+              .services__slider_active
+          ul.services__list
+            li.services__item
+              h3.services__item-title Высокий уровень вовлечения
+              p.services__item-description Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта.
+              a.services__item-link(href="#")
+                span.services__item-link-text Подробнее
+                svg(width="19" height="14")
+                  use(xlink:href="images/sprite.svg#arrow")

@@ -47,26 +47,35 @@
   }
 
   &__newsletter-input {
+    position: relative;
     width: 75.3%;
     padding: 15px 23px;
     border: 1px solid transparent;
     background-color: $shadeColor;
     color: $whiteColor;
+    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 
     &::placeholder {
       color: $defaultColor;
+      transition: color 0.3s ease-in-out
+    }
 
-      &:hover {
+    &:focus-visible:not(.just-validate-error-field) {
+      border-color: $accentColor;
+    }
+
+    &:hover {
+      &::placeholder {
         color: $accentColor;
       }
     }
 
-    &:focus-visible {
-      border: 1px solid $accentColor;
-    }
-
     &:active {
-      border: 1px solid transparent;
+      border-color: transparent;
+
+      &::placeholder {
+        color: $defaultColor;
+      }
     }
   }
 
@@ -161,3 +170,20 @@
     }
   }
 }
+
+.just-validate-error-label {
+  position: absolute;
+  padding: 4px 23px;
+  font-size: 9px;
+  color: $errorColor !important;
+}
+
+.just-validate-error-field {
+  border-color: $errorColor;
+  //color: $defaultColor;
+
+  &::placeholder {
+    color: $defaultColor;
+  }
+}
+
