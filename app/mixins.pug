@@ -2,7 +2,7 @@ mixin socialIcons(width, height, name)
   svg(width= width height= height)
     use(href=`images/sprite.svg#${name}`)
 
-mixin pictureSample(maxWidth1, maxWidth2, maxWidth3, folder, imageName, altText)
+mixin pictureSample(maxWidth1, maxWidth2, maxWidth3, folder, imageName, altText, className)
   source(
     media=`(max-width: ${maxWidth1})`
     srcset=`${folder}${imageName}-320.webp 1x, ${folder}${imageName}-320-2x.webp 2x`
@@ -27,9 +27,10 @@ mixin pictureSample(maxWidth1, maxWidth2, maxWidth3, folder, imageName, altText)
   source(
     srcset=`${folder}${imageName}.webp 1x, ${folder}${imageName}-2x.webp 2x`
     type="image/webp")
-  img.hero__img(
+  img(class=className)(
     src=`${folder}${imageName}.jpg`
-    srcset=`${folder}${imageName}-2x.jpg 2x` alt=`${altText}`)
+    srcset=`${folder}${imageName}-2x.jpg 2x` alt=`${altText}`
+    loading="lazy")
 
 mixin navList
   - var titles = {'О студии': 'about','Наши проекты': 'projects','Услуги': 'services','Мастер-классы': 'workshops','Контакты': 'contacts'}
@@ -37,14 +38,11 @@ mixin navList
     li.nav__item
       a.nav__link(href="#" + value)= index
 
-//mixin projectCard(tag, description, date)
-//  span.project__tag= tag
-//  p.project__description= description
-//  time.project__date= date
-//
-//mixin projectCardBig(tag, date, title, description)
-//  span.project__tag= tag
-//  time.project__date= date
-//  h3.project__title= title
-//  p.project__description= description
-//  button.btn.project__btn= "О проекте"
+mixin workList(folder, dataset)
+  ul.services__work-list(data-services=`${dataset}`)
+    - var li = 1
+    while li < 17
+      li.services__work-item
+        picture.services__picture
+          +pictureSample('640px', '998px', '1200px', folder, 'work-' + li, 'Фото' + li, 'services__work-img')
+      - li++

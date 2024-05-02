@@ -89,11 +89,11 @@ html(lang="ru")
             button.btn.block-poster__btn Узнать больше
           h2.hero__block-title Работы участников предыдущего мастер-класса
           picture.hero__picture.hero__picture_wide
-            +pictureSample('640px', '998px', '1200px', 'images/hero/', 'hero-2', 'Фото девушки с голубой неоновой подсветкой')
+            +pictureSample('640px', '998px', '1200px', 'images/hero/', 'hero-2', 'Фото девушки с голубой неоновой подсветкой', 'hero__img')
           picture.hero__picture.hero__picture_min
-            +pictureSample('640px', '998px', '1200px', 'images/hero/', 'hero-3', 'Фото девушки с сине-красной неоновой подсветкой')
+            +pictureSample('640px', '998px', '1200px', 'images/hero/', 'hero-3', 'Фото девушки с сине-красной неоновой подсветкой', 'hero__img')
           picture.hero__picture.hero__picture_min
-            +pictureSample('640px', '998px', '1200px', 'images/hero/', 'hero-4', 'Фото девушки с разноцветной неоновой подсветкой')
+            +pictureSample('640px', '998px', '1200px', 'images/hero/', 'hero-4', 'Фото девушки с разноцветной неоновой подсветкой', 'hero__img')
       section.about(id="about")
         .container.about__container
           .about__left-block
@@ -210,11 +210,70 @@ html(lang="ru")
               .services__slide Услуги по ретуши
               .services__slider
               .services__slider_active
-          ul.services__list
-            li.services__item
-              h3.services__item-title Высокий уровень вовлечения
-              p.services__item-description Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта.
-              a.services__item-link(href="#")
-                span.services__item-link-text Подробнее
-                svg(width="19" height="14")
-                  use(xlink:href="images/sprite.svg#arrow")
+            ul.services__list(data-services="Основной перечень")
+              li.services__item.services__item-img_1
+                .services__item-card.card
+                  h3.card__title Высокий уровень вовлечения
+                  p.card__description Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта.
+                  a.card__link(href="#")
+                    span.card__text Подробнее
+                    svg.card__arrow(width="19" height="14")
+                      use(xlink:href="images/sprite.svg#arrow")
+              li.services__item.services__item-img_2
+                .services__item-card.card
+                  h3.card__title Диаграммы связей
+                  p.card__description Значимость этих проблем настолько очевидна, что реализация намеченных плановых заданий влечет за собой процесс.
+                  a.card__link(href="#")
+                    span.card__text Подробнее
+                    svg.card__arrow(width="19" height="14")
+                      use(xlink:href="images/sprite.svg#arrow")
+              li.services__item.services__item-img_3
+                .services__item-card.card.card-3
+                  h3.card__title Высокотехнологичная концепция
+                  p.card__description В частности, убеждённость некоторых оппонентов способствует подготовке и реализации анализа существующих паттернов.
+                  a.card__link(href="#")
+                    span.card__text Подробнее
+                    svg.card__arrow(width="19" height="14")
+                      use(xlink:href="images/sprite.svg#arrow")
+              li.services__item.services__item-img_4
+                .services__item-card.card.card-4
+                  h3.card__title Сложившаяся структура организации
+                  p.card__description Кстати,  сторонники тоталитаризма в науке будут объединены в целые кластеры себе подобных.
+                  a.card__link(href="#")
+                    span.card__text Подробнее
+                    svg.card__arrow(width="19" height="14")
+                      use(xlink:href="images/sprite.svg#arrow")
+              li.services__item.services__item-img_5
+                .services__item-card.card.card-5
+                  h3.card__title Внутренние резервы и ресурсы
+                  p.card__description Банальные, но неопровержимые выводы, а также ключевые особенности структуры проекта являются только методом.
+                  a.card__link(href="#")
+                    span.card__text Подробнее
+                    svg.card__arrow(width="19" height="14")
+                      use(xlink:href="images/sprite.svg#arrow")
+            ul.services__retouch-list(data-services="Услуги по ретуши")
+              - var li = 1
+              while li < 11
+                li.services__retouch-item(class="services__retouch-img_" + li)
+                  .services__retouch-card.card
+                    - var description = ['Принимая во внимание показатели', 'Таким образом, выбранный нами...', 'Также как высокое качество...', 'Безусловно, семантический разбор...', 'Внезапно, предприниматели в интернете...', 'Есть над чем подумать: активные...', 'Сделанные на базе аналитики выводы...', 'Как принято считать, сторонники...', 'Задача организации, в особенности...', 'Активно развивающиеся страны...']
+                    p.card__description-retouch.card__description= description[li - 1]
+                    a.card__link(href="#")
+                      span.card__text Подробнее
+                      svg.card__arrow(width="19" height="14")
+                        use(xlink:href="images/sprite.svg#arrow")
+                  - li++
+          .services__right-block
+            .services__promo.promo
+              h3.promo__title Акция!
+              span.promo__text Только в июне
+              .promo__wrapper
+                svg.promo__sale(width="116" height="59")
+                  use(xlink:href="images/sprite.svg#sale")
+                p.promo__description 1,5 часа портретной съемки + ретушь 10 снимков
+                a.btn.promo__link(href="#") Узнать больше
+            .services__work
+              h3.services__work-title Выполненные работы
+              +workList('images/services/work/', 'Основной перечень')
+              +workList('images/services/retouch/work/', 'Услуги по ретуши')
+

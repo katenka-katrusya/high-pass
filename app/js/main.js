@@ -133,6 +133,12 @@ function switchTabs() {
       contents.forEach((content) => {  // 1 таб === 1 список, 2 таб === 2 список
         if (content.dataset.tabNum === textTub) {
           content.classList.add('project__list_active');
+
+          tl.fromTo(content, {
+            duration: 0.5, x: 200, opacity: 0, ease: 'power3.out'
+          }, {
+            duration: 0.5, x: 0, opacity: 1, ease: 'power3.out'
+          });
         }
       });
     });
@@ -152,8 +158,12 @@ function removeClass(elements, className) {
 function slider(activeSlide = 0) {
   const slides = document.querySelectorAll('.services__slide');
   const sliderActive = document.querySelector('.services__slider_active');
+  const listRetouchAll = document.querySelectorAll('[data-services="Услуги по ретуши"]');
+  const listDefaultAll = document.querySelectorAll('[data-services="Основной перечень"]');
 
   slides[activeSlide].classList.add('services__slide_active');
+
+  listRetouchAll.forEach((list) => list.style.display = 'none');
 
   slides.forEach((slide) => {
     slide.addEventListener('click', () => {
@@ -161,9 +171,24 @@ function slider(activeSlide = 0) {
       removeClass(slides, 'services__slide_active');
       slide.classList.add('services__slide_active');
 
-      tl.to(sliderActive, { duration: 0.5, x: slide.offsetLeft, ease: 'power3.out' });
+      slide.textContent === 'Услуги по ретуши'
+      ? changeDisplayLists(listDefaultAll, listRetouchAll)
+      : changeDisplayLists(listRetouchAll, listDefaultAll);
+
+      tl
+        .to(sliderActive, { duration: 0.5, x: slide.offsetLeft, ease: 'power3.out' })
+        .fromTo([listDefaultAll, listRetouchAll], {
+          duration: 0.7, y: 200, opacity: 0
+        }, {
+          duration: 0.7, y: 0, opacity: 1, ease: 'power3.out'
+        }, '<');
     });
   });
+
+  function changeDisplayLists(listNone, listBlock) {
+    listNone.forEach((list) => list.style.display = 'none');
+    listBlock.forEach((list) => list.style.display = '');
+  }
 }
 
 slider(0);

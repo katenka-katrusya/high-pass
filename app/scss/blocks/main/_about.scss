@@ -14,7 +14,6 @@
   &__title {
     margin-bottom: 9px;
     @extend %section-title;
-    letter-spacing: 1.7px;
     color: $whiteColor;
   }
 
@@ -119,11 +118,11 @@
   }
 
   @include media(640px) {
-    padding-bottom: 49px;
+    @include sectionPaddings(32px, 49px);
 
     &__container {
       flex-direction: column;
-      gap: 22px;
+      gap: 13px;
     }
 
     &__left-block {
@@ -132,10 +131,10 @@
 
     &__title {
       font-size: 18px;
-      letter-spacing: 1.1px;
     }
 
     &__block-text {
+      margin-bottom: 9px;
       font-size: 14px;
       line-height: 1.78571;
     }
@@ -145,14 +144,15 @@
     }
 
     &__newsletter-label {
-      margin-bottom: 17px;
+      margin-bottom: 16px;
       font-size: 18px;
+      line-height: 1;
     }
 
     &__newsletter-input {
       margin-right: 0;
       margin-bottom: 20px;
-      padding: 11px 23px;
+      padding: 10px 23px;
 
       &::placeholder {
         font-size: 14px;
@@ -180,7 +180,6 @@
 
 .just-validate-error-field {
   border-color: $errorColor;
-  //color: $defaultColor;
 
   &::placeholder {
     color: $defaultColor;

@@ -1,5 +1,5 @@
 .project {
-  @include sectionPaddings(42px, 40px);
+  @include sectionPaddings(42px, 23px);
 
   &__title {
     @extend %section-title;
@@ -47,7 +47,6 @@
     }
 
     &-big {
-      //align-items: start;
       padding: 26px 30px 30px 29px;
       background-repeat: no-repeat;
       background-size: cover;
@@ -90,7 +89,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    //height: 100%;
+    height: 100%;
   }
 
   &__tag {
@@ -210,7 +209,7 @@
   }
 
   @include media(1024px) {
-    @include sectionPaddings(41px, 40px);
+    @include sectionPaddings(41px, 22px);
 
     &__list {
       margin-bottom: 52px;
@@ -402,6 +401,10 @@
 
     &__title {
       display: none;
+    }
+
+    &__wrapper-content {
+      height: 52%;
     }
 
     // мобильные табы
