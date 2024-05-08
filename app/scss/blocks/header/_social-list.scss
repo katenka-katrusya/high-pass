@@ -15,8 +15,10 @@
       fill: $accentColor-2;
     }
 
-    &:hover use {
-      fill: $accentColor;
+    @media (hover: hover) {
+      &:hover use {
+        fill: $accentColor;
+      }
     }
 
     &:active use {

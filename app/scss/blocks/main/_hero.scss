@@ -3,11 +3,37 @@
   font-family: $font-main;
   font-weight: 400;
 
+  @include media(1200px) {
+    @include sectionPaddings(14px, 39px);
+  }
+
+  @include media(998px) {
+    padding-top: 20px;
+  }
+
+  @include media(640px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   &__container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto 300fr 257fr;
     gap: 30px;
+
+    @include media(1200px) {
+      grid-template-rows: auto 332fr 186fr;
+      gap: 30px 31px;
+    }
+
+    @include media(998px) {
+      grid-template-rows: auto 228fr 133fr;
+    }
+
+    @include media(640px) {
+      grid-template-rows: auto 186fr 105fr;
+      gap: 30px 30px;
+    }
   }
 
   &__block-title {
@@ -16,6 +42,21 @@
     font-family: $font-second;
     @extend %section-title;
     line-height: 104%;
+
+    @include media(1200px) {
+      margin-bottom: -5px;
+    }
+
+    @include media(998px) {
+      font-size: 22px;
+      margin-bottom: -14px;
+    }
+
+    @include media(640px) {
+      padding-top: 5px;
+      grid-column: span 4;
+      font-size: 18px;
+    }
   }
 
   &__picture {
@@ -27,61 +68,21 @@
 
     &_wide {
       grid-column: span 2;
-    }
-  }
 
-  @include media(1200px) {
-    @include sectionPaddings(14px, 39px);
-
-    &__container {
-      grid-template-rows: auto 332fr 186fr;
-      gap: 30px 31px;
-    }
-
-    &__block-title {
-      margin-bottom: -5px;
-    }
-  }
-
-  @include media(998px) {
-    padding-top: 20px;
-
-    &__container {
-      grid-template-rows: auto 228fr 133fr;
-    }
-
-    &__block-title {
-      font-size: 22px;
-      margin-bottom: -14px;
-    }
-  }
-
-  @include media(640px) {
-    grid-template-columns: repeat(3, 1fr);
-
-    &__container {
-      grid-template-rows: auto 186fr 105fr;
-      gap: 30px 30px;
-    }
-
-    &__block-title {
-      padding-top: 5px;
-      grid-column: span 4;
-      font-size: 18px;
-    }
-
-    &__picture {
-      &_min {
-        grid-column: span 2;
-      }
-
-      &_wide {
+      @include media(640px) {
         grid-column: span 4;
+      }
+    }
+
+    &_min {
+      @include media(640px) {
+        grid-column: span 2;
       }
     }
   }
 }
 
+// block-poster
 .block-poster {
   position: relative;
   display: flex;
@@ -93,6 +94,24 @@
   background: url("../images/hero/hero-1.webp") center / cover no-repeat;
   color: $whiteColor;
 
+  @include media(1200px) {
+    padding: 50px 15px 30px 30px;
+    background: url("../images/hero/hero-1-1024.webp") center / cover no-repeat;
+  }
+
+  @include media(998px) {
+    padding-left: 28px;
+    background: url("../images/hero/hero-1-768.jpg") center / cover no-repeat;
+  }
+
+  @include media(640px) {
+    padding: 50px 15px 30px 29px;
+    grid-column: span 4;
+    min-height: 422px;
+    font-size: 14px;
+    background: url("../images/hero/hero-1-320.jpg") center / cover no-repeat;
+  }
+
   &__tag {
     position: absolute;
     top: 15px;
@@ -100,10 +119,37 @@
     padding: 7px 15px;
     font-size: 14px;
     background-color: $darkColor;
+
+    @include media(1200px) {
+      padding: 7px 16px;
+    }
+
+    @include media(998px) {
+      padding: 7px 15px;
+    }
+
+    @include media(640px) {
+      top: 6px;
+      right: 5px;
+      padding: 4px 7px;
+      font-size: 12px;
+    }
   }
 
   &__author {
     margin-bottom: 3px;
+
+    @include media(1200px) {
+      margin-bottom: 8px;
+    }
+
+    @include media(998px) {
+      margin-bottom: 14px;
+    }
+
+    @include media(640px) {
+      margin-bottom: 8px;
+    }
   }
 
   &__title {
@@ -113,88 +159,37 @@
     font-weight: 700;
     font-size: 36px;
     line-height: 1.04;
-  }
 
-  &__btn {
-    align-self: start;
-    padding: 14px 21px;
-  }
-
-  @include media(1200px) {
-    padding: 50px 15px 30px 30px;
-    background: url("../images/hero/hero-1-1024.webp") center / cover no-repeat;
-
-    &__tag {
-      padding: 7px 16px;
-    }
-
-    &__author {
-      margin-bottom: 8px;
-    }
-
-    &__title {
+    @include media(1200px) {
       margin-bottom: 23px;
       font-size: 34px;
       line-height: 1;
     }
 
-    &__btn {
-      padding: 14px 20px;
-    }
-  }
-
-  @include media(998px) {
-    padding-left: 28px;
-    background: url("../images/hero/hero-1-768.jpg") center / cover no-repeat;
-
-    &__tag {
-      padding: 7px 15px;
-    }
-
-    &__author {
-      margin-bottom: 14px;
-    }
-
-    &__title {
+    @include media(998px) {
       line-height: 31px;
     }
-  }
 
-  @include media(640px) {
-    padding: 50px 15px 30px 29px;
-    grid-column: span 4;
-    min-height: 422px;
-    font-size: 14px;
-    background: url("../images/hero/hero-1-320.jpg") center / cover no-repeat;
-
-    &__tag {
-      top: 6px;
-      right: 5px;
-      padding: 4px 7px;
-      font-size: 12px;
-    }
-
-    &__author {
-      margin-bottom: 8px;
-    }
-
-    &__title {
+    @include media(640px) {
       margin-bottom: 14px;
       font-size: 24px;
       line-height: 1.1;
     }
+  }
 
-    &__btn {
+  &__btn {
+    align-self: start;
+    padding: 14px 21px;
+
+    @include media(1200px) {
+      padding: 14px 20px;
+    }
+
+    @include media(640px) {
       padding: 9px 20px;
     }
   }
 }
-
-//.section-title {
-//  font-weight: 700;
-//  font-size: 24px;
-//  color: $darkColor;
-//}
 
 
 

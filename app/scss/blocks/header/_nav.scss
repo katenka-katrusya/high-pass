@@ -21,8 +21,10 @@
     outline: transparent;
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
-    &:hover {
-      color: $accentColor;
+    @media (hover: hover) {
+      &:hover {
+        color: $accentColor;
+      }
     }
 
     &:focus-visible:not(:active) {

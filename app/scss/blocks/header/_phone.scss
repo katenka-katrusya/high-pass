@@ -24,11 +24,13 @@
       outline-offset: 3px;
     }
 
-    &:hover {
-      color: $accentColor;
+    @media (hover: hover) {
+      &:hover {
+        color: $accentColor;
 
-      & use {
-        fill: $accentColor;
+        & use {
+          fill: $accentColor;
+        }
       }
     }
   }
