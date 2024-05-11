@@ -46,3 +46,19 @@ mixin workList(folder, dataset)
         picture.services__picture
           +pictureSample('640px', '998px', '1200px', folder, 'work-' + li, 'Фото' + li, 'services__work-img')
       - li++
+
+mixin pictureMini(maxWidth, folder, imageName, altText, className)
+  source(
+    media=`(max-width: ${maxWidth})`
+    srcset=`${folder}${imageName}-1024.webp 1x, ${folder}${imageName}-1024-2x.webp 2x`
+    type="image/webp")
+  source(
+    media=`(max-width: ${maxWidth})`
+    srcset=`${folder}${imageName}-1024.jpg 1x, ${folder}${imageName}-1024-2x.jpg 2x`)
+  source(
+    srcset=`${folder}${imageName}.webp 1x, ${folder}${imageName}-2x.webp 2x`
+    type="image/webp")
+  img(class=className)(
+    src=`${folder}${imageName}.jpg`
+    srcset=`${folder}${imageName}-2x.jpg 2x` alt=`${altText}`
+    loading="lazy")

@@ -192,13 +192,9 @@
       padding: 67% 0 0 0;
 
       @include media(1024px) {
-        padding-top: 57%;
+        padding-top: 59%;
         grid-column: span 3;
       }
-
-      //@include media(780px) {
-      //  padding-top: 57%;
-      //}
 
       @include media(640px) {
         padding-top: 73%;
@@ -451,10 +447,6 @@
 
   &__item {
     &-img {
-      //@include media(1024px) {
-      //  grid-column: span 2;
-      //}
-
       &_two2 {
         background-image: url("../images/projects/tab-two2.webp");
 
@@ -583,10 +575,6 @@
         padding-top: 57%;
         grid-column: span 3;
       }
-
-      //@include media(780px) {
-      //  padding-top: 57%;
-      //}
 
       @include media(640px) {
         padding-top: 73%;
