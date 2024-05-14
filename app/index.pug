@@ -110,7 +110,7 @@ html(lang="ru")
               | новых принципов формирования материально-&nbsp;технической и&nbsp;кадровой базы. Приятно, граждане, наблюдать,
               | как явные признаки институционализации являются только методом политического участия и&nbsp;нарушающими общечеловеческие нормы этики.
           .about__right-block
-            form.about__newsletter-form(action="https://jsonplaceholder.typicode.com/posts" method="POST")
+            form.about__newsletter-form(data-jsv="form-1" action="https://jsonplaceholder.typicode.com/posts" method="POST")
               label.about__newsletter-label(for="about__email" aria-label="Подписаться на рассылку") Подписаться на рассылку
               .about__newsletter-wrapper
                 input.about__newsletter-input(id="about__email" type="text" placeholder="E-mail" name="email" aria-label="Введите свой Email")
@@ -150,6 +150,7 @@ html(lang="ru")
               span.project__tag #пейзаж
               p.project__description Равным образом, сложившаяся структура организации...
               time.project__date(datetime="02-15") 15 февраля
+              a.project__link(href="#" target="_blank")
             li.project__item.project__item-big.project__item-big_2
               .project__wrapper-content
                 span.project__tag.project__tag_big2 #проектзабвение
@@ -342,21 +343,25 @@ html(lang="ru")
           .contacts__wrapper
             .contacts__map#map
               .contacts__address
-                h3.contacts__address-title Студия “High pass”
-                p.contacts__address-description 107045, Москва, Даев переулок, дом 41, бизнес-центр «Даев Плаза», этаж 8, офис № 82
-                .phone.contacts__phone
-                  a.phone__link.contacts__link(href="tel:+749542423532")
-                    svg.phone__link-svg.contacts__svg(width="18" height="18")
-                      use(xlink:href="images/sprite.svg#phone")
-                    span.phone__link-tel.contacts__tel +7 (495) 42-423-532
-            form.contacts__form(action="https://jsonplaceholder.typicode.com/posts" method="POST")
+                button.contacts__close-btn
+                  svg.contacts__close-svg(width="20" height="20")
+                    use(xlink:href="images/sprite.svg#close-svg")
+                .contacts__address-wrapper
+                  h3.contacts__address-title Студия “High pass”
+                  p.contacts__address-description 107045, Москва, Даев переулок, дом 41, бизнес-центр «Даев Плаза», этаж 8, офис № 82
+                  .phone.contacts__phone
+                    a.phone__link.contacts__link(href="tel:+749542423532")
+                      svg.phone__link-svg.contacts__svg(width="18" height="18")
+                        use(xlink:href="images/sprite.svg#phone")
+                      span.phone__link-tel.contacts__tel +7 (495) 42-423-532
+            form.contacts__form(data-jsv="form-2" action="https://jsonplaceholder.typicode.com/posts" method="POST")
               h3.contacts__form-title Оставить заявку
               p.contacts__form-description Оставьте ваши данные, указав в графе “Комментарий” желаемые время и дату съемки или другого мероприятия
               .contacts__form-wrapper
                 label.contacts__form-label
-                  input.contacts__form-input(type="text" name="name" placeholder="Имя" aria-label="Имя" required)
+                  input.contacts__form-input(type="text" name="name" placeholder="Имя" aria-label="Имя")
                 label.contacts__form-label
-                  input.contacts__form-input(type="email" name="email" placeholder="E-mail" aria-label="Email" required)
+                  input.contacts__form-input(type="email" name="email" placeholder="E-mail" aria-label="Email")
                 label.contacts__form-label
                   textarea.contacts__form-input(data-textarea name="comment" placeholder="Комментарий" aria-label="Комментарий")
                 button.btn.contacts__form-btn(type="submit") Отправить

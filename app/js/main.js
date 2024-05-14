@@ -5,30 +5,42 @@ const searchCloseBtn = document.querySelector('.search__close-btn');
 const phone = document.querySelector('.phone');
 const openBurger = document.querySelector('.burger__open');
 const closeBurger = document.querySelector('.burger__close');
-const navLinks = document.querySelectorAll('.nav__mobile-link');
+const navLinks = document.querySelectorAll('.nav__link');
+const address = document.querySelector('.contacts__address');
+const closeAddressBtn = document.querySelector('.contacts__close-btn');
 const tl = gsap.timeline();
 
 // анимации при загрузке страницы
-tl
-  .from('.nav', {   // анимация навигации на десктопе
-    duration: 3, opacity: 0, ease: 'power3.out'
-  })
-  .from(['.block-poster', '.hero__picture'], {     // анимация фото в блоке hero
-      duration: 1, opacity: 0, ease: 'power3.out'
-    },
-    '<');
+function animatePage() {
+  tl
+    .from('.nav', {   // анимация навигации на десктопе
+      duration: 3, opacity: 0, ease: 'power3.out'
+    })
+    .from(['.block-poster', '.hero__picture'], {     // анимация фото в блоке hero
+        duration: 1, opacity: 0, ease: 'power3.out'
+      },
+      '<');
+}
+
+animatePage();
 
 
 // кнопка поиска и закрытие
-const searchInput = gsap.timeline({ paused: true, onStart: openSearch, onReverseComplete: closeSearch })
-  .fromTo(['.search__mobile', '.search__mobile-label'], {   // открываем поиск на мобильных устройствах
-    duration: 0.5, display: 'none', opacity: 0, x: 100, ease: 'power1.inOut'
-  }, {
-    duration: 0.5, display: 'flex', opacity: 1, x: 0, ease: 'power1.inOut'
-  })
-  .to('.search__btn', {     // убираем лупу, когда поиск открывается
-    duration: 0.5, opacity: 0, display: 'none', ease: 'power1.inOut'
-  }, '<');
+function animateSearch() {
+  const searchInput = gsap.timeline({ paused: true, onStart: openSearch, onReverseComplete: closeSearch })
+    .fromTo(['.search__mobile', '.search__mobile-label'], {   // открываем поиск на мобильных устройствах
+      display: 'none', opacity: 0, x: 100
+    }, {
+      duration: 0.5, display: 'flex', opacity: 1, x: 0, ease: 'power1.inOut'
+    })
+    .to('.search__btn', {     // убираем лупу, когда поиск открывается
+      duration: 0.5, opacity: 0, display: 'none', ease: 'power1.inOut'
+    }, '<');
+
+  return searchInput;
+}
+
+const searchInput = animateSearch();
 
 function openSearch() {
   if (window.innerWidth <= 998) {
@@ -45,23 +57,29 @@ searchCloseBtn.addEventListener('click', closeSearch);
 
 
 // burger
-const tlBurger = gsap.timeline({ paused: true, onStart: addMenu, onReverseComplete: removeMenu })
-  .fromTo(closeBurger, {    // иконка бургера меняется на другую
-      duration: 0.5, opacity: 0, display: 'none', ease: 'power3.out'
-    }, {
-      duration: 0.5, opacity: 1, display: 'block', ease: 'power3.out'
-    },
-    '<')
-  .fromTo('.nav__mobile', {   // открытие навигации в бургере
-      duration: 0.5, display: 'none', opacity: 0, x: -100, ease: 'power3.out'
-    }, {
-      duration: 0.5, display: 'flex', opacity: 1, x: 0, ease: 'power3.out'
-    },
-    '<')
-  .from('.nav__mobile-list', {
-      duration: 0.5, x: 400, ease: 'power3.out'
-    },
-    '<');
+function animateBurger() {
+  const tlBurger = gsap.timeline({ paused: true, onStart: addMenu, onReverseComplete: removeMenu })
+    .fromTo(closeBurger, {    // иконка бургера меняется на другую
+        opacity: 0, display: 'none'
+      }, {
+        duration: 0.5, opacity: 1, display: 'block', ease: 'power3.out'
+      },
+      '<')
+    .fromTo('.nav__mobile', {   // открытие навигации в бургере
+        display: 'none', opacity: 0, x: -100
+      }, {
+        duration: 0.5, display: 'flex', opacity: 1, x: 0, ease: 'power3.out'
+      },
+      '<')
+    .from('.nav__mobile-list', {
+        duration: 0.5, x: 400, ease: 'power3.out'
+      },
+      '<');
+
+  return tlBurger;
+}
+
+const tlBurger = animateBurger();
 
 function addMenu() {
   phone.classList.add('phone__mobile_active');
@@ -83,34 +101,13 @@ closeBurger.addEventListener('click', removeMenu);
 function clickOnBergerLink() {
   navLinks.forEach((link) => {
     link.addEventListener('click', () => {
+      document.body.classList.remove('no-scroll');
       tlBurger.reverse();
     });
   });
 }
 
 clickOnBergerLink();
-
-// валидация формы подписки
-function checkFormNewsletter() {
-  const validator = new window.JustValidate('.about__newsletter-form');
-
-  validator
-    .addField('.about__newsletter-input', [
-      {
-        rule: 'email',
-        errorMessage: 'Недопустимый формат',
-      },
-    ]);
-
-  // очистка поля после отправки формы
-  const formNewsletter = document.querySelector('.about__newsletter-form');
-  formNewsletter.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formNewsletter.reset();
-  });
-}
-
-checkFormNewsletter();
 
 
 // переключение табов
@@ -193,68 +190,134 @@ slider(0);
 
 
 // Карта
-// initMap();
-//
-// async function initMap() {
-//   // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
-//   await ymaps3.ready;
-//
-//   const { YMap, YMapDefaultSchemeLayer } = ymaps3;
-//
-//   // Иницилиазируем карту
-//   const map = new YMap(document.querySelector('.contacts__map'), {
-//     location: {
-//       center: [37.63840266676759, 55.76940785],
-//       zoom: 17
-//     }
-//   });
-//
-//   const defaultMarker = new ymaps3.YMapDefaultMarker({
-//     title: 'Привет мир!',
-//     subtitle: 'Добрый и светлый',
-//     color: 'blue'
-//   });
-//
-//   // const content = document.createElement('div');
-//   // const marker = new ymaps3.YMapMarker(content);
-//   // content.innerHTML = `
-//   //     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-//   //       <circle cx="6" cy="6" r="6" fill="#FF6E30" />
-//   //     </svg>
-//   // `;
-//
-//   // Добавляем слой для отображения схематической карты
-//   map.addChild(new YMapDefaultSchemeLayer({ zIndex: 1800 }));
-//   // map.addChild(marker);
-//   map.addChild(defaultMarker);
-// }
-
 ymaps.ready(init);
 
 function init() {
-  var map = new ymaps.Map('map', {
-    center: [55.76940785, 37.63840266676759],
-    zoom: 16
+  const map = new ymaps.Map('map', {
+    center: [55.768, 37.634],
+    zoom: 16,
+    // убрать все элементы с карты
+    controls: []
   });
 
-  var myPlacemark = new ymaps.Placemark(
+  const myPlacemark = new ymaps.Placemark(
     [55.76940785, 37.63840266676759],
+    {
+      // пустой баллун, иначе метки нет
+      balloonContent: ''
+    },
     {
       iconLayout: 'default#image',
       iconImageHref: '../images/icons/marker.png',
-      icon_imageSize: [40, 40],
+      iconImageSize: [12, 12],
       iconImageOffset: [-20, -40]
     });
 
-  map.controls.remove('geolocationControl'); // удаляем геолокацию
-  map.controls.remove('searchControl'); // удаляем поиск
-  map.controls.remove('trafficControl'); // удаляем контроль трафика
-  map.controls.remove('typeSelector'); // удаляем тип
+  myPlacemark.events.add('click', function () {
+    if (address.style.display === 'block') {
+      closeAddress();
+    } else {
+      openAddress();
+    }
+  });
 
-  // map.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
-  map.controls.remove('zoomControl'); // удаляем контрол зуммирования
-  map.controls.remove('rulerControl'); // удаляем контрол правил
-  // map.behaviors.disable(['scrollZoom']); // отключаем скролл карты (опционально)
+  closeAddressBtn.addEventListener('click', closeAddress);
 
   map.geoObjects.add(myPlacemark);
+}
+
+// анимации типа баллуна
+function animateBalloon() {
+  // начинаем с закрытия баллуна и реверс для открытия
+  const tlAddress = gsap.timeline({ paused: true, onStart: closeAddress, onReverseComplete: openAddress })
+    .fromTo('.contacts__address', {
+      display: 'block', opacity: 1
+    }, {
+      duration: 0.4, display: 'none', opacity: 0, ease: 'power1.inOut'
+    });
+
+  return tlAddress;
+}
+
+const tlAddress = animateBalloon();
+
+function openAddress() {
+  tlAddress.reverse();
+}
+
+function closeAddress() {
+  tlAddress.play();
+}
+
+// валидация формы подписки
+function checkFormNewsletter() {
+  const validator = new window.JustValidate('.about__newsletter-form');
+  const formNewsletter = document.querySelector('.about__newsletter-form');
+
+  validator
+    .addField('.about__newsletter-input', [
+      {
+        rule: 'required',
+      },
+      {
+        rule: 'email',
+        errorMessage: 'Недопустимый формат',
+      },
+    ]);
+
+  // очистка поля после отправки формы
+  preventDefault(formNewsletter);
+}
+
+checkFormNewsletter();
+
+// форма оставить заявку
+function checkFormContacts() {
+  const validator = new window.JustValidate('.contacts__form');
+  const formContacts = document.querySelector('.contacts__form');
+
+  validator
+    .addField('.contacts__form-input[type="email"]', [
+      {
+        rule: 'required',
+        errorMessage: 'Обязательное поле',
+      },
+      {
+        rule: 'email',
+        errorMessage: 'Недопустимый формат',
+      }
+    ])
+    .addField('.contacts__form-input[name="name"]', [
+      {
+        rule: 'required',
+        errorMessage: 'Обязательное поле',
+      },
+      {
+        rule: 'maxLength',
+        value: 15,
+        errorMessage: 'Максимум 15 символов',
+      },
+      {
+        rule: 'minLength',
+        value: 2,
+        errorMessage: 'Минимум 2 символа',
+      },
+      {
+        rule: 'customRegexp',
+        value: /^[а-яёЁa-z]+(?:\s[а-яёЁa-z]+)*$/gi,
+        errorMessage: 'Недопустимый формат',
+      }
+    ]);
+
+  // очистка поля после отправки формы
+  preventDefault(formContacts);
+}
+
+checkFormContacts();
+
+function preventDefault(nameForm) {
+  nameForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    nameForm.reset();
+  });
 }

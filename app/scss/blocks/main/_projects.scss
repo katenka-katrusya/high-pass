@@ -53,6 +53,10 @@
     flex-direction: column;
     min-height: 300px;
 
+    &:focus-within {
+      outline: 1px solid $accentColor-2;
+    }
+
     @include media(640px) {
       min-height: 273px;
     }
@@ -305,9 +309,11 @@
     }
   }
 
-  &__link:before {
-    @include pseudoElements(0, 0, 0, 0, 100%);
-    height: 100%;
+  &__link {
+    &:before {
+      @include pseudoElements(0, 0, 0, 0, 100%);
+      height: 100%;
+    }
   }
 
   &__description {

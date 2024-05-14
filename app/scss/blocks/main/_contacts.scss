@@ -1,32 +1,90 @@
 .contacts {
-  @include sectionPaddings(40px, 70px);
+  @include sectionPaddings(43px, 70px);
   background-color: $whiteColor;
+
+  @include media(1200px) {
+    @include sectionPaddings(39px, 70px);
+  }
+
+  @include media(640px) {
+    @include sectionPaddings(34px, 70px);
+  }
+
+  &__container {
+    @include media(640px) {
+      padding: 0;
+    }
+  }
 
   &__title {
     @extend %section-title;
     margin-bottom: 22px;
+
+    @include media(640px) {
+      font-size: 18px;
+      padding: 0 21px;
+      margin-bottom: 14px;
+    }
   }
 
   &__wrapper {
     display: flex;
     gap: 30px;
+
+    @include media(998px) {
+      flex-direction: column;
+      gap: 25px;
+    }
   }
 
   &__map {
     position: relative;
-    min-width: 850px;
-    width: 100%;
+    width: min(100%, 850px);
+
+    @include media(1200px) {
+      width: min(100%, 591px);
+    }
+
+    @include media(998px) {
+      width: 100%;
+      min-height: 460px;
+    }
+
+    @include media(640px) {
+      min-height: 472px;
+    }
   }
 
   &__address {
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    padding: 175px 50px 10px 60px;
-    width: 45%;
-    height: 100%;
+    width: 48.3%;
     background: rgba(32, 32, 32, 0.85);
     z-index: 10;
+    padding: 175px 50px 157px 60px;
+
+    @include media(1200px) {
+      bottom: 0;
+      width: 100%;
+      padding: 20px 10px 20px 31px;
+    }
+
+    @include media(998px) {
+      padding-top: 23px;
+    }
+
+    @include media(640px) {
+      padding: 25px 10px 10px 18px;
+    }
+
+    &-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      @include media(640px) {
+        gap: 8px;
+      }
+    }
 
     &-title {
       margin-bottom: 5px;
@@ -35,31 +93,112 @@
       font-size: 24px;
       line-height: 22px;
       color: $whiteColor;
+
+      @include media(640px) {
+        font-size: 18px;
+      }
     }
 
     &-description {
       margin-bottom: 2px;
       line-height: 28px;
       color: $defaultColor;
+
+      @include media(1200px) {
+        max-width: 293px;
+      }
+
+      @include media(998px) {
+        max-width: 65%;
+      }
+
+      @include media(640px) {
+        max-width: 92%;
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+
+  &__phone {
+    @include media(1200px) {
+      position: absolute;
+      bottom: 7px;
+      left: 93px;
+      margin-right: 0;
+    }
+
+    @include media(998px) {
+      position: static;
+      padding-top: 4px;
+    }
+
+    @include media(640px) {
+      display: block;
+      padding: 0;
+    }
+  }
+
+  &__link {
+    @include media(998px) {
+      display: inline-flex;
     }
   }
 
   &__tel {
     font-weight: 400;
+    font-family: $font-second;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    fill: #666;
+    z-index: 20;
+
+    &:focus-visible {
+      outline: 1px solid $accentColor-2;
+    }
   }
 
   &__form {
+    width: 30%;
+
+    @include media(1200px) {
+      width: 35%;
+    }
+
+    @include media(998px) {
+      width: 65%;
+    }
+
+    @include media(640px) {
+      padding: 0 21px;
+      width: 100%;
+    }
+
     &-title {
       @extend %section-title;
       margin-bottom: 5px;
       font-weight: 400;
       line-height: 22px;
+
+      @include media(640px) {
+        font-size: 18px;
+      }
     }
 
     &-description {
       margin-bottom: 14px;
       line-height: 22px;
       color: $highlightColor;
+
+      @include media(640px) {
+        margin-bottom: 17px;
+        font-size: 14px;
+        line-height: 18px;
+      }
     }
 
     &-wrapper {
@@ -68,13 +207,57 @@
       gap: 20px;
     }
 
+    &-label {
+      display: flex;
+    }
+
     &-input {
+      position: relative;
       padding: 15px 15px 16px 23px;
       width: 100%;
       border: 1px solid transparent;
       background-color: $shadeLightColor;
+      transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+
+      @include media(640px) {
+        padding: 10px 23px;
+      }
+
+      &::placeholder {
+        color: $highlightColor;
+        transition: color 0.3s ease-in-out;
+
+        @include media(640px) {
+          font-size: 14px;
+        }
+      }
+
+      &:focus-visible:not(.just-validate-error-field) {
+        border-color: $accentColor;
+
+        &::placeholder {
+          color: $highlightColor;
+        }
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          &::placeholder {
+            color: $accentColor;
+          }
+        }
+      }
+
+      &:active {
+        border-color: transparent;
+
+        &::placeholder {
+          color: $darkColor;
+        }
+      }
 
       &[data-textarea] {
+        outline: transparent;
         min-height: 150px;
         resize: none;
       }
@@ -82,6 +265,25 @@
 
     &-btn {
       align-self: start;
+      @include media(640px) {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .just-validate-error-label {
+    position: absolute;
+    padding: 4px 23px;
+    font-size: 9px;
+    color: $errorColor2 !important;
+  }
+
+  .just-validate-error-field {
+    border-color: $errorColor2;
+
+    &::placeholder {
+      color: $darkColor;
     }
   }
 }

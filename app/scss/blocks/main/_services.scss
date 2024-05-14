@@ -1,8 +1,8 @@
 .services {
-  @include sectionPaddings(20px, 40px);
+  @include sectionPaddings(20px, 38px);
 
   @include media(1200px) {
-    @include sectionPaddings(20px, 38px);
+    @include sectionPaddings(20px, 40px);
   }
 
   @include media(998px) {
@@ -242,6 +242,11 @@
 
     &-img {
       width: 100%;
+      transition: transform 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 
@@ -389,8 +394,18 @@
   }
 
   &__link {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    outline: transparent;
+    transition: transform 0.3s ease-in-out;
+
+    &:focus-visible {
+      outline: 1px solid $accentColor;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__text {
