@@ -397,14 +397,16 @@
     display: inline-flex;
     align-items: center;
     outline: transparent;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 
     &:focus-visible {
       outline: 1px solid $accentColor;
     }
 
-    &:hover {
-      transform: scale(1.05);
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 

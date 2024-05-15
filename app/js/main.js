@@ -223,6 +223,10 @@ function init() {
 
   closeAddressBtn.addEventListener('click', closeAddress);
 
+  if (window.innerWidth <= 640) {
+    map.setCenter([55.768, 37.636]);
+  }
+
   map.geoObjects.add(myPlacemark);
 }
 
@@ -273,7 +277,9 @@ checkFormNewsletter();
 
 // форма оставить заявку
 function checkFormContacts() {
-  const validator = new window.JustValidate('.contacts__form');
+  const validator = new window.JustValidate('.contacts__form', {
+    validateBeforeSubmitting: true,
+  });
   const formContacts = document.querySelector('.contacts__form');
 
   validator
@@ -318,6 +324,7 @@ checkFormContacts();
 function preventDefault(nameForm) {
   nameForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    console.log('отправка!');
     nameForm.reset();
   });
 }

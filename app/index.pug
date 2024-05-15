@@ -365,3 +365,25 @@ html(lang="ru")
                 label.contacts__form-label
                   textarea.contacts__form-input(data-textarea name="comment" placeholder="Комментарий" aria-label="Комментарий")
                 button.btn.contacts__form-btn(type="submit") Отправить
+    footer.footer
+      .container.footer__container
+        .footer__left-block
+          a.logo(href="#")
+            svg(width="191" height="31")
+              use(xlink:href="images/sprite.svg#logo")
+          p.footer__text.footer__text_reg Фотостудия High pass<sup class="reg">&reg;</sup> 2018-2020
+        .footer__middle-block
+          p.footer__text Которая из&nbsp;моих фотографий самая любимая? Та, которую я&nbsp;собираюсь снять завтра.
+          p.footer__copyright &copy;&nbsp;Имоджен Каннингем
+        .footer__right-block
+          p.footer__text.footer__text_more Больше интересного:
+          ul.social-list
+            li.social-list__item
+              a.social-list__link(href="#" aria-label="Ссылка на instagram")
+                +socialIcons("30", "30", "inst")
+            li.social-list__item
+              a.social-list__link(href="#" aria-label="Ссылка на facebook")
+                +socialIcons("30", "30", "facebook")
+            li.social-list__item
+              a.social-list__link(href="#" aria-label="Ссылка на Вконтакте")
+                +socialIcons("30", "30", "vk")
