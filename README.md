@@ -18,6 +18,7 @@
   - HTML, SCSS (включая миксины, переменные), JS
   - Gulp
   - Pug (включая миксины)
+  - Just-validate в формах
   - библиотека GSAP
   - API карты
   - sprite.svg
